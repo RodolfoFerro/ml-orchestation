@@ -54,7 +54,7 @@ with Flow('hello-flow') as flow:
 state = flow.run()
 
 # Obtención de resultados por tarea
-print(state.result[activity_name].result)
+#print(state.result[activity_name].result)
 
 # Registro de flujo en la nube de Prefect
 # flow.register(project_name='tester')
