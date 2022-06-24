@@ -29,8 +29,8 @@ def test_api(url):
 
 
 @task
-def return_activity(data):
-    """Task to return the activity.
+def return_quote(data):
+    """Task to return the quote.
     Parameters
     ----------
     data : dict
@@ -40,21 +40,25 @@ def return_activity(data):
     logger = prefect.context.get('logger')
     logger.info('Returning the activity')
 
-    activity = data['activity']
-    logger.info(f'Activity: {activity}')
+    anime = data['anime']
+    character = data['character']
+    quote = data['quote']
+    logger.info(f'Anime: {anime}')
+    logger.info(f'Character: {character}')
+    logger.info(f'Quote: {quote}')
 
-    return activity
+    return quote
 
 
 with Flow('hello-flow') as flow:
-    raw_data = test_api('https://www.boredapi.com/api/activity')
-    activity_name = return_activity(raw_data)
+    raw_data = test_api('https://animechan.vercel.app/api/random')
+    quote = return_quote(raw_data)
 
 # Ejecución de un flujo
 state = flow.run()
 
 # Obtención de resultados por tarea
-#print(state.result[activity_name].result)
+# print(state.result[quote].result)
 
 # Registro de flujo en la nube de Prefect
 # flow.register(project_name='tester')
