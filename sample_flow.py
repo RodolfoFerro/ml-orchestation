@@ -38,7 +38,7 @@ def return_quote(data):
     """
 
     logger = prefect.context.get('logger')
-    logger.info('Returning the activity')
+    logger.info('Returning the quote')
 
     anime = data['anime']
     character = data['character']
